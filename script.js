@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar funcionalidades independentes
     initTheme();
+    initMobileMenu();
     initParticles();
     initTyping();
     initProjectFilter();
@@ -190,5 +191,30 @@ function initContactForm() {
         const btnText = form.querySelector('.btn-text');
         if (btnText) btnText.textContent = "Mensagem Enviada com Sucesso!";
         form.reset();
+    });
+}
+
+/* ==========================================================================
+   7. Menu Hambúrguer Mobile
+   ========================================================================== */
+function initMobileMenu() {
+    const burger = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    if (!burger || !navLinks) return;
+
+    burger.addEventListener('click', () => {
+        const isActive = burger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        burger.setAttribute('aria-expanded', isActive);
+    });
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            burger.classList.remove('active');
+            navLinks.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+        });
     });
 }
