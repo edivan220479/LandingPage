@@ -2,7 +2,7 @@
 function removeOverlay() {
     const overlay = document.getElementById('fallback-overlay');
     if (overlay) overlay.style.opacity = '0';
-    setTimeout(() => { if(overlay) overlay.remove(); }, 500);
+    setTimeout(() => { if (overlay) overlay.remove(); }, 500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Tratamento global de erros para nunca quebrar ou congelar o navegador
-window.onerror = function() {
+window.onerror = function () {
     removeOverlay();
     return false;
 };
@@ -72,7 +72,7 @@ function initParticles() {
             this.y += this.vy;
             if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
             if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            
+
             // Twinkle effect (fluctuating opacity)
             this.alpha += this.alphaSpeed;
             if (this.alpha < 0.1 || this.alpha > 0.55) {
